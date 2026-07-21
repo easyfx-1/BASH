@@ -1,0 +1,10 @@
+# -s = testa se algo existe/é verdadeiro (ex: arquivo, string)
+# -p = pede uma entrada do usuário (prompt)
+# -n = verifica se texto NÃO está vazio
+# -z = verifica se texto ESTÁ vazio
+# -f = verifica se é um arquivo
+# -d = verifica se é uma pasta
+# -e = verifica se existe
+# -r = verifica se pode ler
+# -w = verifica se pode escrever
+# -x = verifica se pode executar
