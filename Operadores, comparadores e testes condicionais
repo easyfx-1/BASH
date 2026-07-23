@@ -1,0 +1,164 @@
+# ============================================
+# OPERADORES E TESTES CONDICIONAIS (Bash)
+# ============================================
+#
+# Testes condicionais são usados com:
+#
+# if
+# elif
+# else
+# while
+#
+# Normalmente utilizam:
+#
+# [ condição ]
+#
+# ou
+#
+# [[ condição ]]
+#
+# O [[ ]] é mais moderno e seguro.
+#
+# ============================================
+# COMPARADORES DE STRINGS (TEXTOS)
+# ============================================
+#
+# =     -> Igual
+#
+# Exemplo:
+# [[ "$nome" = "rafael" ]]
+#
+# !=    -> Diferente
+#
+# Exemplo:
+# [[ "$nome" != "admin" ]]
+#
+# -z    -> String vazia
+#
+# Exemplo:
+# [[ -z "$nome" ]]
+#
+# -n    -> String NÃO vazia
+#
+# Exemplo:
+# [[ -n "$nome" ]]
+#
+# <     -> Menor (ordem alfabética)
+#
+# Exemplo:
+# [[ "$a" < "$b" ]]
+#
+# >     -> Maior (ordem alfabética)
+#
+# Exemplo:
+# [[ "$z" > "$m" ]]
+#
+# ============================================
+# COMPARADORES NUMÉRICOS
+# ============================================
+#
+# -eq   -> Igual
+#
+# Exemplo:
+# [[ $porta -eq 80 ]]
+#
+# -ne   -> Diferente
+#
+# Exemplo:
+# [[ $porta -ne 22 ]]
+#
+# -gt   -> Maior que
+#
+# Exemplo:
+# [[ $idade -gt 18 ]]
+#
+# -ge   -> Maior ou igual
+#
+# Exemplo:
+# [[ $idade -ge 18 ]]
+#
+# -lt   -> Menor que
+#
+# Exemplo:
+# [[ $porta -lt 1024 ]]
+#
+# -le   -> Menor ou igual
+#
+# Exemplo:
+# [[ $porta -le 443 ]]
+#
+# ============================================
+# OPERADORES LÓGICOS
+# ============================================
+#
+# && -> E (AND)
+#
+# Exemplo:
+# [[ $porta -eq 80 && "$host" = "ativo" ]]
+#
+# || -> OU (OR)
+#
+# Exemplo:
+# [[ $porta -eq 80 || $porta -eq 443 ]]
+#
+# ! -> NÃO (NOT)
+#
+# Exemplo:
+# [[ ! -f arquivo.txt ]]
+#
+# ============================================
+# TESTES DE ARQUIVOS
+# ============================================
+#
+# -f -> Arquivo existe
+#
+# Exemplo:
+# [[ -f script.sh ]]
+#
+# -d -> Diretório existe
+#
+# Exemplo:
+# [[ -d /home ]]
+#
+# -e -> Arquivo ou diretório existe
+#
+# Exemplo:
+# [[ -e backup.zip ]]
+#
+# -r -> Possui permissão de leitura
+#
+# -w -> Possui permissão de escrita
+#
+# -x -> Possui permissão de execução
+#
+# ============================================
+# EXEMPLO COMPLETO
+# ============================================
+#
+# if [[ $porta -eq 80 ]]; then
+#     echo "Servidor HTTP encontrado."
+# elif [[ $porta -eq 443 ]]; then
+#     echo "Servidor HTTPS encontrado."
+# else
+#     echo "Outra porta."
+# fi
+#
+# ============================================
+# DICAS
+# ============================================
+#
+# ✔ Para números use:
+#    -eq -ne -gt -lt -ge -le
+#
+# ✔ Para textos use:
+#    =  !=  -z  -n
+#
+# ✔ Prefira [[ ]] em vez de [ ].
+#
+# ✔ Sempre coloque variáveis de texto entre aspas:
+#    [[ "$nome" = "admin" ]]
+#
+# Isso evita erros quando a variável estiver vazia
+# ou contiver espaços.
+#
+# ============================================
