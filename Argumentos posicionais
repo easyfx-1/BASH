@@ -1,0 +1,80 @@
+# ==============================
+# ARGUMENTOS POSICIONAIS (Bash)
+# ==============================
+#
+# Argumentos posicionais são valores passados para um script
+# diretamente na linha de comando.
+#
+# Exemplo:
+#
+# ./scanner.sh 192.168.1.10 80 tcp
+#
+# O Bash cria automaticamente:
+#
+# $0 -> Nome do script
+# $1 -> Primeiro argumento
+# $2 -> Segundo argumento
+# $3 -> Terceiro argumento
+# ...
+# $# -> Quantidade de argumentos recebidos
+# $@ -> Todos os argumentos
+# $$ -> PID (ID do processo do script)
+#
+# ---------------------------------------
+# Exemplo:
+#
+# ./scanner.sh 10.10.10.5 443
+#
+# Dentro do script:
+#
+# $0 = ./scanner.sh
+# $1 = 10.10.10.5
+# $2 = 443
+#
+# ---------------------------------------
+# Exemplo de uso:
+#
+# #!/bin/bash
+#
+# printf "Script : %s\n" "$0"
+# printf "IP     : %s\n" "$1"
+# printf "Porta  : %s\n" "$2"
+# printf "PID    : %s\n" "$$"
+#
+# Execução:
+#
+# ./scanner.sh 192.168.1.100 80
+#
+# Saída:
+#
+# Script : ./scanner.sh
+# IP     : 192.168.1.100
+# Porta  : 80
+# PID    : 12345
+#
+# ---------------------------------------
+# Quando usar?
+#
+# ✔ Scripts de automação
+# ✔ Ferramentas de Pentest
+# ✔ Scanners
+# ✔ Enumeradores
+# ✔ Scripts chamados por outros scripts
+#
+# Evite usar "read" quando o script será automatizado.
+# Prefira argumentos ($1, $2...) para permitir execução
+# direta pela linha de comando.
+#
+# Exemplo profissional:
+#
+# ./portscan.sh 172.16.1.55 22
+#
+# ao invés de:
+#
+# Digite o IP:
+# Digite a porta:
+#
+# Scripts usados em Red Team e automações quase sempre
+# recebem parâmetros posicionais.
+#
+# ==============================
