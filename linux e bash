@@ -1,0 +1,339 @@
+LINUX / BASH
+
+
+========================
+LS (listar arquivos)
+========================
+
+-l  = lista detalhada (long)
+-a  = mostra arquivos ocultos (all)
+-h  = tamanho legível (human)
+-r  = ordem inversa (reverse)
+-R  = recursivo (entra nas pastas)
+-t  = ordena por data
+-S  = ordena por tamanho
+
+Exemplo:
+ls -lah
+
+
+========================
+CP (copiar)
+========================
+
+-r = copiar diretórios
+-v = mostrar o processo
+-i = perguntar antes
+-f = forçar substituição
+
+Exemplo:
+cp -rv pasta backup/
+
+
+========================
+MV (mover)
+========================
+
+-v = mostrar processo
+-i = perguntar antes
+-f = forçar
+
+
+========================
+RM (remover)
+========================
+
+-r = remover diretório
+-f = força
+-v = mostrar
+-i = perguntar antes
+
+Exemplo:
+rm -rf pasta
+
+
+========================
+CAT
+========================
+
+-n = numerar linhas
+-b = numerar apenas linhas com texto
+
+
+========================
+GREP
+========================
+
+-i = ignora maiúsculas/minúsculas
+-r = pesquisa recursiva
+-n = mostra número da linha
+-v = mostra o contrário
+-c = conta ocorrências
+
+Exemplo:
+grep -rin "admin" .
+
+
+========================
+CURL
+========================
+
+-O = baixar arquivo
+-o = salvar com outro nome
+-I = somente cabeçalhos HTTP
+-L = seguir redirecionamentos
+-X = método HTTP
+-H = cabeçalhos HTTP
+-d = enviar dados (POST)
+-s = silencioso
+
+Exemplo:
+curl -I https://google.com
+
+
+========================
+WGET
+========================
+
+-O = salvar com outro nome
+-c = continuar download
+-q = silencioso
+
+
+========================
+PYTHON
+========================
+
+-m = executar módulo
+-c = executar código
+-V = versão
+-i = modo interativo
+
+Exemplo:
+python -m http.server
+
+
+========================
+BASH (TESTES)
+========================
+
+-z = string vazia
+
+if [ -z "$nome" ]
+
+--------------------------------
+
+-n = string NÃO vazia
+
+--------------------------------
+
+-f = arquivo existe
+
+--------------------------------
+
+-d = diretório existe
+
+--------------------------------
+
+-e = arquivo OU diretório existe
+
+--------------------------------
+
+-r = possui permissão de leitura
+
+--------------------------------
+
+-w = possui permissão de escrita
+
+--------------------------------
+
+-x = possui permissão de execução
+
+
+========================
+COMPARAÇÃO NUMÉRICA
+========================
+
+-eq = igual
+
+-ne = diferente
+
+-gt = maior
+
+-lt = menor
+
+-ge = maior ou igual
+
+-le = menor ou igual
+
+Exemplo:
+
+if [ "$idade" -ge 18 ]
+
+
+========================
+CHMOD
+========================
+
+7 = rwx
+
+6 = rw-
+
+5 = r-x
+
+4 = r--
+
+3 = -wx
+
+2 = -w-
+
+1 = --x
+
+0 = ---
+
+
+========================
+FIND
+========================
+
+-name = nome
+
+-type f = somente arquivos
+
+-type d = somente diretórios
+
+-size = tamanho
+
+-mtime = data
+
+-exec = executar comando
+
+Exemplo:
+
+find . -name "*.txt"
+
+
+========================
+TAR
+========================
+
+-c = criar
+
+-x = extrair
+
+-v = mostrar
+
+-f = arquivo
+
+-z = gzip
+
+Exemplo:
+
+tar -czvf backup.tar.gz pasta/
+
+
+========================
+ZIP
+========================
+
+-r = recursivo
+
+-e = senha
+
+
+========================
+SSH
+========================
+
+-i = chave privada
+
+-p = porta
+
+Exemplo:
+
+ssh -i chave.pem usuario@ip
+
+
+========================
+SCP
+========================
+
+-r = copiar pastas
+
+-P = porta SSH
+
+Exemplo:
+
+scp -P 2222 arquivo usuario@ip:/tmp/
+
+
+========================
+NMAP
+========================
+
+-Pn = ignora ping
+
+-sS = SYN Scan
+
+-sT = TCP Connect
+
+-sV = detectar versões
+
+-sC = scripts padrão
+
+-O = detectar sistema operacional
+
+-A = scan agressivo
+
+-p = portas
+
+-T4 = velocidade
+
+-v = verbose
+
+-vv = muito verbose
+
+-oN = salvar em TXT
+
+-oX = salvar em XML
+
+--script = executar NSE
+
+Exemplo:
+
+nmap -Pn -sV -sC -p 80,443 alvo.com
+
+
+==========================================
+REGRINHA PARA NÃO ESQUECER
+==========================================
+
+-v  = Verbose (mostrar detalhes)
+
+-h  = Human / Help
+
+-r  = Recursive / Reverse
+
+-f  = Force / File
+
+-i  = Interactive / Input
+
+-o  = Output
+
+-O  = Output (arquivo)
+
+-p  = Port / Parents
+
+-n  = Number / No
+
+-a  = All
+
+-d  = Directory
+
+-c  = Create / Count
+
+-x  = Execute / Extract
+
+-z  = Zip / Gzip / String vazia
+
+==========================================
