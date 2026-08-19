@@ -1,0 +1,37 @@
+#!/bin/bash
+
+url="$1"
+pasta="videos"
+
+if [ -z "$url" ]; then
+    echo "Uso: $0 <URL-do-YouTube>"
+    exit 1
+fi
+
+for programa in yt-dlp deno ffmpeg; do
+    if ! command -v "$programa" >/dev/null 2>&1; then
+        echo "Erro: $programa não está instalado."
+        exit 1
+    fi
+done
+
+mkdir -p "$pasta"
+
+echo "Baixando vídeo..."
+
+if yt-dlp \
+    --no-playlist \
+    --js-runtimes deno \
+    --remote-components ejs:npm \
+    --format "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" \
+    --merge-output-format mp4 \
+    --embed-metadata \
+    --output "$pasta/%(title)s.%(ext)s" \
+    --print "after_move:Arquivo salvo: %(filepath)s" \
+    "$url"
+then
+    echo "Download concluído!"
+else
+    echo "Erro: não foi possível baixar o vídeo."
+    exit 1
+fi
