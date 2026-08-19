@@ -1,0 +1,63 @@
+#!/bin/bash
+
+entrada="$1"
+crf="${2:-28}"
+
+if [ -z "$entrada" ]; then
+    echo "Uso: $0 <video> [qualidade]"
+    echo "Exemplo: $0 video.mp4 28"
+    exit 1
+fi
+
+if [ ! -f "$entrada" ]; then
+    echo "Erro: arquivo não encontrado."
+    exit 1
+fi
+
+if ! command -v ffmpeg >/dev/null 2>&1; then
+    echo "Erro: ffmpeg não está instalado."
+    echo "Instale com: sudo apt install ffmpeg"
+    exit 1
+fi
+
+if ! [[ "$crf" =~ ^[0-9]+$ ]] || [ "$crf" -lt 18 ] || [ "$crf" -gt 35 ]; then
+    echo "Erro: escolha uma qualidade entre 18 e 35."
+    exit 1
+fi
+
+diretorio=$(dirname "$entrada")
+arquivo=$(basename "$entrada")
+nome="${arquivo%.*}"
+saida="$diretorio/${nome}-comprimido.mp4"
+
+if [ -e "$saida" ]; then
+    echo "Erro: o arquivo já existe:"
+    echo "$saida"
+    exit 1
+fi
+
+echo "Comprimindo vídeo..."
+echo "Entrada: $entrada"
+echo "Qualidade CRF: $crf"
+
+if ffmpeg \
+    -hide_banner \
+    -i "$entrada" \
+    -c:v libx264 \
+    -preset medium \
+    -crf "$crf" \
+    -pix_fmt yuv420p \
+    -c:a aac \
+    -b:a 128k \
+    -movflags +faststart \
+    "$saida"
+then
+    echo
+    echo "Vídeo comprimido com sucesso!"
+    echo "Original: $(du -h "$entrada" | cut -f1)"
+    echo "Comprimido: $(du -h "$saida" | cut -f1)"
+    echo "Arquivo: $saida"
+else
+    echo "Erro durante a compressão."
+    exit 1
+fi
